@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionsAnswers.API", "QuestionsAnswers.API\QuestionsAnswers.API.csproj", "{8C9DB5F4-1007-4CEB-9C44-E1B9C5A2765C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionsAnswers.API", "QuestionsAnswers.API\QuestionsAnswers.API.csproj", "{8C9DB5F4-1007-4CEB-9C44-E1B9C5A2765C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionsAnswers.Web", "QuestionsAnswers.Web\QuestionsAnswers.Web.csproj", "{BB851C52-8F2B-4906-A004-4CC6C8460B22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionsAnswers.Web", "QuestionsAnswers.Web\QuestionsAnswers.Web.csproj", "{BB851C52-8F2B-4906-A004-4CC6C8460B22}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{6E2DFEE9-AB8C-4E12-880D-E208648E197E}"
 	ProjectSection(SolutionItems) = preProject

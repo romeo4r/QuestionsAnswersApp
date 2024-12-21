@@ -27,6 +27,7 @@ namespace QuestionsAnswers.API.Controllers
 
             try
             {
+
                 // Call UserService to create the user
                 var userId = await _userService.CreateUserQAAsync(
                     createUserDto.Username,
@@ -42,6 +43,7 @@ namespace QuestionsAnswers.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
 
         // GET: api/userQA/username/{username}
         [HttpGet("{username}")]
@@ -67,5 +69,33 @@ namespace QuestionsAnswers.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        // POST: api/userQA/login
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        {
+            if (loginDto == null)
+                return BadRequest("Invalid login data.");
+
+            try
+            {
+                // Call UserService to validate user credentials
+                var user = await _userService.ValidateUserAsync(loginDto.Username, loginDto.Password);
+
+                if (user == null)
+                {
+                    return Unauthorized(new { message = "Invalid username or password." });
+                }
+
+                // Return the user data or a token (for example, JWT) upon successful login
+                return Ok(new { message = "Login successful", userId = user.Id });
+            }
+            catch (Exception ex)
+            {
+                // If an error occurs, return BadRequest with the error message
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
     }
 }

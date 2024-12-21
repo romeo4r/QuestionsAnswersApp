@@ -108,6 +108,26 @@ namespace QuestionsAnswers.API.Services
             }
         }
 
+        public async Task<UserQA> ValidateUserAsync(string username, string password)
+        {
+            var user = await GetUserQAByUsernameAsync(username);
+            if (user == null)
+            {
+                return null;  // Return null if the user does not exist
+            }
+
+            // Hash the input password with the user's salt
+            var hashedPassword = HashPassword(password, user.Salt);
+
+            // Check if the hashed password matches the stored password
+            if (hashedPassword == user.PasswordHash)
+            {
+                return user;  // Return the user if the password matches
+            }
+
+            return null;  // Return null if the password does not match
+        }
+
 
     }
 }

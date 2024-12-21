@@ -1,0 +1,56 @@
+﻿@page
+@model QuestionsAnswers.Web.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Username">Username</label>
+        <input type="text" class="form-control" id="Username" name="Username" required />
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" required />
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" id="Password" name="Password" required />
+    </div>
+    <div class="form-group">
+        <label for="ConfirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+
+    @if (!string.IsNullOrEmpty(TempData["SuccessMessage"]?.ToString()))
+    {
+        <div class="success-message">
+            <p>@TempData["SuccessMessage"]</p>
+        </div>
+
+        <!-- JavaScript to show the success message for 2 seconds and then redirect to Login -->
+        <script type="text/javascript">
+            setTimeout(function() {
+                window.location.href = '/Login'; // Redirect to the login page
+            }, 2000); // 2 seconds delay
+        </script>
+    }
+
+    @if (!string.IsNullOrEmpty(TempData["ErrorMessage"]?.ToString()))
+    {
+        <div class="error-message">
+            <p>@TempData["ErrorMessage"]</p>
+        </div>
+
+        <!-- JavaScript to show the error message for 2 seconds and then redirect to Login -->
+        <script type="text/javascript">
+            setTimeout(function () {
+                window.location.href = '/Register'; // Stay into register page
+            }, 2000); // 2 seconds delay
+        </script>
+    }
+</form>
