@@ -1,0 +1,54 @@
+
+CREATE DATABASE QuestionsAnswersDB;
+GO
+
+USE QuestionsAnswersDB;
+GO
+
+CREATE TABLE Users (
+    Id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
+    Username NVARCHAR(50) NOT NULL UNIQUE,
+    Email NVARCHAR(100) NOT NULL UNIQUE,
+    PasswordHash NVARCHAR(255) NOT NULL,
+    Salt NVARCHAR(255) NOT NULL,
+    CreationDate DATETIME DEFAULT GETDATE(),
+    IsActive BIT DEFAULT 1
+);
+GO
+
+CREATE TABLE Questions (
+    Id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
+    UserId UNIQUEIDENTIFIER NOT NULL,
+    Title NVARCHAR(200) NOT NULL,
+    CreationDate DATETIME DEFAULT GETDATE(),
+    IsClosed BIT DEFAULT 0,
+    CONSTRAINT FK_Questions_Users FOREIGN KEY (UserId) REFERENCES Users(Id)
+);
+GO
+
+CREATE TABLE Answers (
+    Id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
+    QuestionId UNIQUEIDENTIFIER NOT NULL,
+    UserId UNIQUEIDENTIFIER NOT NULL,
+    Response NVARCHAR(MAX) NOT NULL,
+    CreationDate DATETIME DEFAULT GETDATE(),
+    CONSTRAINT FK_Answers_Questions FOREIGN KEY (QuestionId) REFERENCES Questions(Id),
+    CONSTRAINT FK_Answers_Users FOREIGN KEY (UserId) REFERENCES Users(Id)
+);
+GO
+
+
+
+-- Create a new login called UserQAA
+CREATE LOGIN UserQAA WITH PASSWORD = 'Wr12azqo+';
+
+USE QuestionsAnswersDb;
+
+-- Create a new user named UserQAA for the above login
+CREATE USER UserQAA FOR LOGIN UserQAA;
+
+-- Assign permissions to the new user
+ALTER ROLE db_datareader ADD MEMBER UserQAA;
+
+ALTER ROLE db_datawriter ADD MEMBER UserQAA;
+
