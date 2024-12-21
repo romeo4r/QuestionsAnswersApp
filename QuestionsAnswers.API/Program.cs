@@ -12,6 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Register UserQAService
 builder.Services.AddScoped<UserQAService>();
 builder.Services.AddScoped<QuestionService>();
+builder.Services.AddScoped<AnswerService>();
 
 // Add services to the container.
 builder.Services.AddControllers();

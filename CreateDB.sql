@@ -348,7 +348,7 @@ BEGIN
     VALUES (@NewAnswerId, @QuestionId, @UserQAId, @Response, GETDATE());
     
     -- Return the Id of the newly created answer
-    SELECT SCOPE_IDENTITY() AS AnswerId;
+    SELECT @NewAnswerId AS AnswerId;
 END
 GO
 

@@ -7,4 +7,9 @@ namespace QuestionsAnswers.API.DTOs
         public Guid UserQAId { get; set; }
         public string Title { get; set; }
     }
+    public class UpdateQuestionDto
+    {
+        public string Title { get; set; }
+        public bool IsClosed { get; set; }
+    }
 }
