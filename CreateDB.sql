@@ -221,12 +221,15 @@ CREATE PROCEDURE sp_InsertQuestion
     @Title NVARCHAR(200)
 AS
 BEGIN
+
+    DECLARE @NewQuestionId UNIQUEIDENTIFIER = NEWID();
+
     -- Insert the new question into the database
-    INSERT INTO Question (UserQAId, Title, CreationDate, IsClosed)
-    VALUES (@UserQAId, @Title, GETDATE(), 0);
+    INSERT INTO Question (Id, UserQAId, Title, CreationDate, IsClosed)
+    VALUES (@NewQuestionId, @UserQAId, @Title, GETDATE(), 0);
     
     -- Return the Id of the newly created question
-    SELECT SCOPE_IDENTITY() AS QuestionId;
+    SELECT @NewQuestionId AS QuestionId;
 END
 GO
 
@@ -337,9 +340,12 @@ CREATE PROCEDURE sp_InsertAnswer
     @Response NVARCHAR(MAX)
 AS
 BEGIN
+
+    DECLARE @NewAnswerId UNIQUEIDENTIFIER = NEWID();
+
     -- Insert the new answer into the database
-    INSERT INTO Answer (QuestionId, UserQAId, Response, CreationDate)
-    VALUES (@QuestionId, @UserQAId, @Response, GETDATE());
+    INSERT INTO Answer (Id, QuestionId, UserQAId, Response, CreationDate)
+    VALUES (@NewAnswerId, @QuestionId, @UserQAId, @Response, GETDATE());
     
     -- Return the Id of the newly created answer
     SELECT SCOPE_IDENTITY() AS AnswerId;
