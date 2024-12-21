@@ -323,6 +323,137 @@ GO
 
 
 --STORE PROCEDURES FOR Answer TABLE
+-- 1. Check if the procedure exists, and drop it if it does
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_InsertAnswer')
+BEGIN
+    DROP PROCEDURE dbo.sp_InsertAnswer;
+END
+GO
+
+-- Insert a new answer
+CREATE PROCEDURE sp_InsertAnswer
+    @QuestionId UNIQUEIDENTIFIER,
+    @UserQAId UNIQUEIDENTIFIER,
+    @Response NVARCHAR(MAX)
+AS
+BEGIN
+    -- Insert the new answer into the database
+    INSERT INTO Answer (QuestionId, UserQAId, Response, CreationDate)
+    VALUES (@QuestionId, @UserQAId, @Response, GETDATE());
+    
+    -- Return the Id of the newly created answer
+    SELECT SCOPE_IDENTITY() AS AnswerId;
+END
+GO
+
+-- 2. Check if the procedure exists, and drop it if it does
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_GetAnswerById')
+BEGIN
+    DROP PROCEDURE dbo.sp_GetAnswerById;
+END
+GO
+
+-- Get an answer by Id
+CREATE PROCEDURE sp_GetAnswerById
+    @Id UNIQUEIDENTIFIER
+AS
+BEGIN
+    -- Retrieve the answer by their Id
+    SELECT Id, QuestionId, UserQAId, Response, CreationDate
+    FROM Answer
+    WHERE Id = @Id;
+END
+GO
+
+-- 3. Check if the procedure exists, and drop it if it does
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_UpdateAnswer')
+BEGIN
+    DROP PROCEDURE dbo.sp_UpdateAnswer;
+END
+GO
+
+-- Update the answer details
+CREATE PROCEDURE sp_UpdateAnswer
+    @Id UNIQUEIDENTIFIER,
+    @Response NVARCHAR(MAX)
+AS
+BEGIN
+    -- Check if the answer exists
+    IF NOT EXISTS (SELECT 1 FROM Answer WHERE Id = @Id)
+    BEGIN
+        RAISERROR('Answer not found.', 16, 1);
+        RETURN;
+    END
+
+    -- Update the answer
+    UPDATE Answer
+    SET Response = @Response,
+        CreationDate = GETDATE()
+    WHERE Id = @Id;
+END
+GO
+
+-- 4. Check if the procedure exists, and drop it if it does
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_DeleteAnswer')
+BEGIN
+    DROP PROCEDURE dbo.sp_DeleteAnswer;
+END
+GO
+
+-- Delete an answer
+CREATE PROCEDURE sp_DeleteAnswer
+    @Id UNIQUEIDENTIFIER
+AS
+BEGIN
+    -- Check if the answer exists
+    IF NOT EXISTS (SELECT 1 FROM Answer WHERE Id = @Id)
+    BEGIN
+        RAISERROR('Answer not found.', 16, 1);
+        RETURN;
+    END
+
+    -- Delete the answer
+    DELETE FROM Answer WHERE Id = @Id;
+END
+GO
+
+-- 5. Check if the procedure exists, and drop it if it does
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_GetAllAnswersDesc')
+BEGIN
+    DROP PROCEDURE dbo.sp_GetAllAnswersDesc;
+END
+GO
+
+-- Get all answers ordered by CreationDate in descending order
+CREATE PROCEDURE sp_GetAllAnswersDesc
+AS
+BEGIN
+    -- Retrieve all answers ordered by CreationDate in descending order
+    SELECT Id, QuestionId, UserQAId, Response, CreationDate
+    FROM Answer
+    ORDER BY CreationDate DESC;
+END
+GO
+
+-- 6. Check if the procedure exists, and drop it if it does
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_GetAnswersByQuestionDesc')
+BEGIN
+    DROP PROCEDURE dbo.sp_GetAnswersByQuestionDesc;
+END
+GO
+
+-- Get all answers for a specific question, ordered by CreationDate in descending order
+CREATE PROCEDURE sp_GetAnswersByQuestionDesc
+    @QuestionId UNIQUEIDENTIFIER
+AS
+BEGIN
+    -- Retrieve all answers for the given question, ordered by CreationDate in descending order
+    SELECT Id, QuestionId, UserQAId, Response, CreationDate
+    FROM Answer
+    WHERE QuestionId = @QuestionId
+    ORDER BY CreationDate DESC;
+END
+GO
 
 
 
