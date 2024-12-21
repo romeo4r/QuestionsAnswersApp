@@ -44,7 +44,7 @@ namespace QuestionsAnswers.API.Controllers
         }
 
         // GET: api/userQA/username/{username}
-        [HttpGet("username/{username}")]
+        [HttpGet("{username}")]
         public async Task<IActionResult> GetUserQAByUsername(string username)
         {
             try
