@@ -7,7 +7,7 @@ builder.Services.AddSession(); //Enable sessions
 
 builder.Services.AddHttpClient("ApiClient", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5000"); // Direction for REST API: QuestionsAnswers.API 
+    client.BaseAddress = new Uri("http://localhost:5001"); // Direction for REST API: QuestionsAnswers.API 
 });
 
 var app = builder.Build();

@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BibliotecaConnection")));
 
-// Register UserQAService
+// Register Question sAnwers(QA) Services
 builder.Services.AddScoped<UserQAService>();
 builder.Services.AddScoped<QuestionService>();
 builder.Services.AddScoped<AnswerService>();
