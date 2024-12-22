@@ -8,7 +8,7 @@
 <h2>@Model.Question.Title</h2>
 
 <p><strong>Asked by:</strong> @Model.Question.UserName</p>
-<p><strong>Creation Date:</strong> @Model.Question.CreationDate.ToString("yyyy/MM/dd HH:mm:ss")</p>
+<p><strong>Created:</strong> @Model.Question.CreationDate.ToString("yyyy/MM/dd HH:mm:ss")</p>
 
 @if (!string.IsNullOrEmpty(Model.ErrorMessage))
 {
@@ -33,7 +33,7 @@ else
                 <tr>
                     <td>@answer.Response</td>
                     <td>@answer.UserName</td>
-                    <td>@answer.CreationDate.ToString("MM/dd/yyyy")</td>
+                    <td>@answer.CreationDate.ToString("yyyy/MM/dd HH:mm:ss")</td>
                 </tr>
             }
         </tbody>

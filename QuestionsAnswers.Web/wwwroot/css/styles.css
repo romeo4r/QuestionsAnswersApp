@@ -8,7 +8,7 @@ body {
 
 /* Container for the login form */
 .login-container {
-    max-width: 400px;  /* Reduced width of the form container */
+    max-width: 400px; /* Reduced width of the form container */
     margin: 5% auto;
     padding: 20px;
     background-color: #ffffff;
@@ -16,17 +16,17 @@ body {
     border-radius: 8px;
 }
 
-/* Heading for the login page */
-.login-container h2 {
-    text-align: center;
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
+    /* Heading for the login page */
+    .login-container h2 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
 
 /* Input fields */
 input[type="text"], input[type="password"] {
-    width: 400px;  /* Reduced width to 400px */
+    width: 400px; /* Reduced width to 400px */
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ddd;
@@ -46,15 +46,15 @@ input[type="text"], input[type="email"] {
     box-sizing: border-box;
 }
 
-/* Input fields focus effect */
-input[type="text"]:focus, input[type="password"]:focus {
-    border-color: #007bff;
-    outline: none;
-}
+    /* Input fields focus effect */
+    input[type="text"]:focus, input[type="password"]:focus {
+        border-color: #007bff;
+        outline: none;
+    }
 
 /* Submit button */
 button[type="submit"] {
-    width: 400px;  /* Reduced width to 400px */
+    width: 400px; /* Reduced width to 400px */
     padding: 12px;
     background-color: #007bff;
     color: white;
@@ -65,9 +65,9 @@ button[type="submit"] {
     margin-top: 10px;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
 
 /* Error message styling */
 .error-message {
@@ -82,9 +82,9 @@ a {
     color: #007bff;
 }
 
-a:hover {
-    text-decoration: underline;
-}
+    a:hover {
+        text-decoration: underline;
+    }
 
 .success-message {
     color: #28a745;
@@ -175,19 +175,23 @@ a:hover {
     display: inline-block; /* Make the form inline so it doesn't take up too much space */
 }
 
-    /* Make the button smaller */
-    .logout-form button {
-        background: none;
-        border: none;
-        color: #007bff; /* Change to a color you prefer */
-        font-size: 14px; /* Adjust the font size */
-        padding: 0; /* Remove padding to reduce button size */
-        height: auto;
-        width: auto;
-        cursor: pointer;
-    }
+/* Make the button smaller */
+.logout-form button {
+    background: none;
+    border: none;
+    color: #007bff; /* Change to a color you prefer */
+    font-size: 14px; /* Adjust the font size */
+    padding: 0; /* Remove padding to reduce button size */
+    height: auto;
+    width: auto;
+    cursor: pointer;
+}
 
-        /* Optionally, hover effect */
-        .logout-form button:hover {
-            text-decoration: underline; /* Optional: underline on hover */
-        }
+/* Optionally, hover effect */
+.logout-form button:hover {
+    text-decoration: underline; /* Optional: underline on hover */
+}
+
+.small-textarea {
+    width: 500px; /* Ancho completo del contenedor */
+}

@@ -1,0 +1,23 @@
+﻿@page "{questionId}"
+@model QuestionsAnswers.Web.Pages.Answer.CreateModel
+
+@{
+    ViewData["Title"] = "Create Answer";
+}
+
+<h2>Create Answer for Question: @Model.Question.Title</h2>
+
+<p><strong>Created by:</strong> @Model.CreatorUserName</p>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Respond">Your Answer</label>
+        <textarea id="Respond" name="Respond" class="form-control small-textarea" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<p></p>
+
+<!-- Button to return to the answers list for this question -->
+<a href="/Question/All" class="btn btn-primary">Back to Questions</a>
