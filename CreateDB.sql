@@ -349,7 +349,7 @@ BEGIN
     -- Return success
     SELECT 1 AS Success;  -- Optional, can be used for verification in the service
 END
-
+GO
 
 --STORE PROCEDURES FOR Answer TABLE
 -- 1. Check if the procedure exists, and drop it if it does
