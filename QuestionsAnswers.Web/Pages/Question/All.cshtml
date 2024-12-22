@@ -1,0 +1,67 @@
+﻿@page
+@using QuestionsAnswers.Web.Pages.Question
+@model QuestionAllModel
+@{
+    ViewData["Title"] = "All Questions";
+}
+
+<h2>All Questions</h2>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        <strong>Error:</strong> @Model.ErrorMessage
+    </div>
+}
+
+<!-- Table to display all questions -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Asked By</th>
+            <th>Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var question in Model.Questions)
+        {
+            <tr>
+                <td>@question.Title</td>
+                <td>@question.UserName</td>
+                <td>@question.CreationDate</td>
+                <td>
+                    <!-- Hidden input for UserQAId -->
+                    <input type="hidden" name="UserQAId" value="@question.UserQAId" />
+
+                    @if (!question.IsClosed)
+                    {
+                        <!-- Link to answer a question -->
+                        <a href="//Answers/@question.Id" class="btn btn-answer btn-sm">Answer</a>
+                    }
+
+                    <!-- Link to view answers -->
+                    <a href="/Answers/AllByQuestion/@question.Id" class="btn btn-view-answers btn-sm">View Answers</a>
+
+                    @if (!question.IsClosed)
+                    {
+                        <!-- Link to close question (visible only to the creator of the question) -->
+                        @if (question.UserName == Model.UserId)
+                        {
+                            <a href="/Question/Close/@question.Id" class="btn btn-sm" style="background-color: #ff8080; color: white; padding: 5px 10px; font-size: 14px; height: auto; width: auto; border-radius: 5px;">
+                                Close Question
+                            </a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Button to create a new question -->
+<a href="/Question/Create" class="btn btn-success btn-sm">Create Question</a>
+
+
+

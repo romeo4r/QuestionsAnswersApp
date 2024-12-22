@@ -32,7 +32,7 @@ namespace QuestionsAnswers.Web.Pages
         {
             if (User.Identity.IsAuthenticated)  // Check if the user is already authenticated
             {
-                return RedirectToPage("/QuestionAll");  // Redirect to the Dashboard if already logged in
+                return RedirectToPage("/Question/All");  // Redirect to the Dashboard if already logged in
             }
 
             return Page();  // If not authenticated, show the login page
@@ -74,11 +74,11 @@ namespace QuestionsAnswers.Web.Pages
 
                 // Create the user claims with userId and userName
                 var userClaims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, Username),
-            new Claim("userId", userId), // Store userId in the claims
-            new Claim("userName", userName) // Store userName in the claims
-        };
+                {
+                    new Claim(ClaimTypes.Name, Username),
+                    new Claim("userId", userId), // Store userId in the claims
+                    new Claim("userName", userName) // Store userName in the claims
+                };
 
                 var identity = new ClaimsIdentity(userClaims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
@@ -86,7 +86,7 @@ namespace QuestionsAnswers.Web.Pages
                 // Sign in the user using cookies
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProperties);
 
-                return RedirectToPage("/QuestionAll"); // Redirect to the QuestionAll page after successful login
+                return RedirectToPage("/Question/All"); // Redirect to the QuestionAll page after successful login
             }
             else
             {

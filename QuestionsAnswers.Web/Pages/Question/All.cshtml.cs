@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
-namespace QuestionsAnswers.Web.Pages
+namespace QuestionsAnswers.Web.Pages.Question
 {
     //[Authorize]  It is necessary to check why the middleware is throwing an error
     public class QuestionAllModel : PageModel
