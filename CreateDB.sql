@@ -307,19 +307,19 @@ END
 GO
 
 -- 5. Check if the procedure exists, and drop it if it does
-IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_GetAllQuestionsDesc')
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_GetQuestionsOrderedByDateDesc')
 BEGIN
-    DROP PROCEDURE dbo.sp_GetAllQuestionsDesc;
+    DROP PROCEDURE dbo.sp_GetQuestionsOrderedByDateDesc;
 END
 GO
 
 -- Get all questions ordered by CreationDate in descending order
-CREATE PROCEDURE sp_GetAllQuestionsDesc
+CREATE PROCEDURE sp_GetQuestionsOrderedByDateDesc
 AS
 BEGIN
     -- Retrieve all questions ordered by CreationDate in descending order
-    SELECT Id, UserQAId, Title, CreationDate, IsClosed
-    FROM Question
+    SELECT Q.Id AS 'Id', Q.UserQAId AS 'UserQAId', Q.Title AS 'Title', UQA.UserName AS 'UserName',Q.CreationDate AS 'CreationDate', Q.IsClosed AS 'IsClosed'
+    FROM Question Q JOIN UserQA UQA on Q.UserQAId = UQA.Id
     ORDER BY CreationDate DESC;
 END
 GO

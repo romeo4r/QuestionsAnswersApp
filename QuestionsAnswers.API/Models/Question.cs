@@ -9,5 +9,6 @@ namespace QuestionsAnswers.API.Models
         public string Title { get; set; }
         public DateTime CreationDate { get; set; }
         public bool IsClosed { get; set; }
+        public string UserName { get; set; }
     }
 }

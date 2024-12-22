@@ -87,8 +87,8 @@ namespace QuestionsAnswers.API.Controllers
                     return Unauthorized(new { message = "Invalid username or password." });
                 }
 
-                // Return the user data or a token (for example, JWT) upon successful login
-                return Ok(new { message = "Login successful", userId = user.Id });
+                // Return the userId and userName upon successful login
+                return Ok(new { message = "Login successful", userId = user.Id, userName = user.Username });
             }
             catch (Exception ex)
             {

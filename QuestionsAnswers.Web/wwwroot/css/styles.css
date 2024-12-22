@@ -99,3 +99,95 @@ a:hover {
     margin-bottom: 15px;
     font-size: 16px;
 }
+
+/* Custom style for smaller buttons */
+.btn-custom {
+    padding: 5px 15px; /* Adjust padding to reduce button size */
+    font-size: 14px; /* Reduce font size */
+    height: auto; /* Ensure the button height adjusts automatically */
+    width: auto; /* Adjust width based on content */
+}
+
+/* Custom class for Answer button (green pastel) */
+.btn-answer {
+    background-color: #53c653; /* Green pastel */
+    color: white;
+    padding: 5px 15px;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+/* Custom class for View Answers button (light blue pastel) */
+.btn-view-answers {
+    background-color: #1ac6ff; /* Light blue pastel */
+    color: white;
+    padding: 5px 15px;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+/* Custom class for Close Question button (red pastel) */
+.btn-close-question {
+    background-color: #ff8080; /* Red pastel */
+    color: white;
+    padding: 5px 15px;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+
+/* Estilo para navbar */
+.navbar {
+    padding: 0.8rem 1rem; /* Ajusta el padding */
+}
+
+.nav-link {
+    padding: 0.5rem 1rem; /* Ajusta el espacio entre los enlaces */
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+/* Botón de logout */
+.btn-link {
+    font-size: 14px;
+    color: #343a40;
+    padding: 0.375rem 0.75rem;
+    text-decoration: none;
+}
+
+/* Asegúrate de que el contenido se vea centrado */
+.navbar-collapse {
+    justify-content: space-between;
+}
+
+/* Reduce the form size and button */
+.logout-form {
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove padding */
+    display: inline-block; /* Make the form inline so it doesn't take up too much space */
+}
+
+    /* Make the button smaller */
+    .logout-form button {
+        background: none;
+        border: none;
+        color: #007bff; /* Change to a color you prefer */
+        font-size: 14px; /* Adjust the font size */
+        padding: 0; /* Remove padding to reduce button size */
+        height: auto;
+        width: auto;
+        cursor: pointer;
+    }
+
+        /* Optionally, hover effect */
+        .logout-form button:hover {
+            text-decoration: underline; /* Optional: underline on hover */
+        }

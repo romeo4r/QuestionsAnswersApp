@@ -15,6 +15,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllers(); // Added controllers for handling login and other actions
 builder.Services.AddSession(); // Enable session management
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddHttpClient("ApiClient", client =>
 {
     client.BaseAddress = new Uri("http://localhost:5001"); // REST API base address: QuestionsAnswers.API

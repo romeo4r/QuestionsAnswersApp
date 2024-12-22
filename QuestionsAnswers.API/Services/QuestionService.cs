@@ -175,7 +175,8 @@ namespace QuestionsAnswers.API.Services
                                 UserQAId = reader.GetGuid(reader.GetOrdinal("UserQAId")),
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
                                 CreationDate = reader.GetDateTime(reader.GetOrdinal("CreationDate")),
-                                IsClosed = reader.GetBoolean(reader.GetOrdinal("IsClosed"))
+                                IsClosed = reader.GetBoolean(reader.GetOrdinal("IsClosed")),
+                                UserName = reader.GetString(reader.GetOrdinal("UserName")),
                             });
                         }
                     }
