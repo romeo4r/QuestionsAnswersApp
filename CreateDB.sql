@@ -324,6 +324,32 @@ BEGIN
 END
 GO
 
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_CloseQuestion')
+BEGIN
+    DROP PROCEDURE dbo.sp_CloseQuestion;
+END
+GO
+
+CREATE PROCEDURE sp_CloseQuestion
+    @QuestionId UNIQUEIDENTIFIER
+AS
+BEGIN
+    -- Check if the question exists
+    IF NOT EXISTS (SELECT 1 FROM Question WHERE Id = @QuestionId)
+    BEGIN
+        RAISERROR('Question not found.', 16, 1);  -- Error if question does not exist
+        RETURN;
+    END
+
+    -- Update the question to be closed
+    UPDATE Question
+    SET IsClosed = 1
+    WHERE Id = @QuestionId;
+
+    -- Return success
+    SELECT 1 AS Success;  -- Optional, can be used for verification in the service
+END
+
 
 --STORE PROCEDURES FOR Answer TABLE
 -- 1. Check if the procedure exists, and drop it if it does

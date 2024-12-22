@@ -185,5 +185,28 @@ namespace QuestionsAnswers.API.Services
 
             return questions;
         }
+
+        public async Task<bool> CloseQuestionAsync(Guid id)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new SqlCommand("sp_CloseQuestion", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Adding the parameter for the stored procedure
+                    command.Parameters.Add(new SqlParameter("@QuestionId", SqlDbType.UniqueIdentifier) { Value = id });
+
+                    // Execute the stored procedure
+                    var result = await command.ExecuteNonQueryAsync();
+
+                    // If result is greater than 0, the update was successful
+                    return result > 0;
+                }
+            }
+        }
+
     }
 }

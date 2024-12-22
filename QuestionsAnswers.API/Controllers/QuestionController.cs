@@ -153,5 +153,29 @@ namespace QuestionsAnswers.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        // PUT: api/question/close/{id}
+        [HttpPut("close/{id}")]
+        public async Task<IActionResult> CloseQuestion(Guid id)
+        {
+            try
+            {
+                var result = await _questionService.CloseQuestionAsync(id);
+
+                if (result)
+                {
+                    return Ok(new { message = "Question closed successfully." });
+                }
+                else
+                {
+                    return NotFound(new { message = "Question not found or could not be closed." });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
     }
 }
