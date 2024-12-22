@@ -43,7 +43,7 @@ namespace QuestionsAnswers.Web.Pages.Answer
             if (answersResponse.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 // If there are no answers, display a custom message
-                ErrorMessage = "No answers found for this question.";
+                ErrorMessage = "No se encontraron respuestas para esta pregunta.";
                 Answers = new List<AnswerViewModel>(); // Initialize empty answers list
             }
             else if (answersResponse.IsSuccessStatusCode)
@@ -54,7 +54,7 @@ namespace QuestionsAnswers.Web.Pages.Answer
             else
             {
                 // Handle other potential errors
-                ErrorMessage = "An error occurred while fetching answers.";
+                ErrorMessage = "Ocurrió un error cuando se estaba recuperando las respuestas.";
             }
 
             return Page();

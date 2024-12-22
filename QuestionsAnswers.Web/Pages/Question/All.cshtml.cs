@@ -55,18 +55,18 @@ namespace QuestionsAnswers.Web.Pages.Question
                         else
                         {
                             // If the date is invalid, set a default value
-                            question.CreationDate = "Invalid date";
+                            question.CreationDate = "Fecha invalida";
                         }
                     }
                 }
                 else
                 {
-                    ErrorMessage = "An error occurred while fetching questions.";
+                    ErrorMessage = "Ocurrio un error al recuperar las preguntas.";
                 }
             }
             catch
             {
-                ErrorMessage = "An error occurred while fetching questions.";
+                ErrorMessage = "Ocurrio un error al recuperar las preguntas.";
             }
 
             return Page();
@@ -77,7 +77,7 @@ namespace QuestionsAnswers.Web.Pages.Question
         {
             if (string.IsNullOrEmpty(NewQuestionTitle))
             {
-                ErrorMessage = "Question title cannot be empty.";
+                ErrorMessage = "La pregunta no puede estar vacía.";
                 return Page();
             }
 
@@ -93,7 +93,7 @@ namespace QuestionsAnswers.Web.Pages.Question
             }
             else
             {
-                ErrorMessage = "Failed to create question.";
+                ErrorMessage = "Error al crear la pregunta.";
                 return Page();
             }
         }
@@ -112,13 +112,13 @@ namespace QuestionsAnswers.Web.Pages.Question
                 }
                 else
                 {
-                    ErrorMessage = "Failed to close the question.";
+                    ErrorMessage = "Error al cerrar la pregunta.";
                     return Page();
                 }
             }
             catch
             {
-                ErrorMessage = "An error occurred while closing the question.";
+                ErrorMessage = "Un error ocurrió cuando se estaba la pregunta.";
                 return Page();
             }
         }

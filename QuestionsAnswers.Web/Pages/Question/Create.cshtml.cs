@@ -59,7 +59,7 @@ namespace QuestionsAnswers.Web.Pages.Question
             else
             {
                 // If the creation fails, show the error message
-                TempData["ErrorMessage"] = "Failed to create the question. Please try again.";
+                TempData["ErrorMessage"] = "Fallo al crear la pregunta, intente de nuevo.";
                 return Page();  // Stay on the current page to show the error
             }
         }

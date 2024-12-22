@@ -15,7 +15,7 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom box-shadow mb-3">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">QuestionsAnswers.Web</a>
+            <a class="navbar-brand" asp-area="" asp-page="/Index">PreguntasRespuestas.Web</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,20 +28,20 @@
                     @if (!User.Identity.IsAuthenticated)  
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Login">Login</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Login">Iniciar Sesion</a>
                         </li>
                     }
                     else
                     {
                             <!-- Link to view all questions for authenticated users -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Question/All">Questions</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Question/All">Preguntas</a>
                         </li>
 
                         <!-- Logout form for authenticated users -->
                         <li class="nav-item">
                             <form method="post" asp-page="/Logout" class="nav-link text-dark logout-form">
-                                <button type="submit" class="btn btn-link text-dark" style="border: none; background: none;">Logout</button>
+                                <button type="submit" class="btn btn-link text-dark" style="border: none; background: none;">Cerrar Sesion</button>
                             </form>
                         </li>
                     }
@@ -60,7 +60,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - QuestionsAnswers.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2024 - PreguntasRespuestas.Web - <a asp-area="" asp-page="/Privacy">Privacidad</a>
         </div>
     </footer>
 

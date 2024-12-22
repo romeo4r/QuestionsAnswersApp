@@ -2,13 +2,13 @@
 @model QuestionsAnswers.Web.Pages.Answer.AllByQuestionModel
 
 @{
-    ViewData["Title"] = "Answers for Question";
+    ViewData["Title"] = "Respues de la pregunta";
 }
-
+<h2>Respuestas de la pregunta:</h2>
 <h2>@Model.Question.Title</h2>
 
-<p><strong>Asked by:</strong> @Model.Question.UserName</p>
-<p><strong>Created:</strong> @Model.Question.CreationDate.ToString("yyyy/MM/dd HH:mm:ss")</p>
+<p><strong>Hecha por:</strong> @Model.Question.UserName</p>
+<p><strong>Fecha de creación:</strong> @Model.Question.CreationDate.ToString("yyyy/MM/dd HH:mm:ss")</p>
 
 @if (!string.IsNullOrEmpty(Model.ErrorMessage))
 {
@@ -18,13 +18,13 @@
 }
 else
 {
-    <h3>Answers:</h3>
+    <h3>Respuestas:</h3>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Response</th>
-                <th>User</th>
-                <th>Creation Date</th>
+                <th>Respuesta</th>
+                <th>Usuario</th>
+                <th>Fecha de creación</th>
             </tr>
         </thead>
         <tbody>
@@ -41,4 +41,4 @@ else
 }
 
 <!-- Button to return to the list of questions -->
-<a href="/Question/All" class="btn btn-primary">Back to Questions</a>
+<a href="/Question/All" class="btn btn-primary">Regresar</a>

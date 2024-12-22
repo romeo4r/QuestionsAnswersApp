@@ -1,25 +1,29 @@
 ﻿@page
 @model QuestionsAnswers.Web.Pages.LoginModel
 
-<h2>Login</h2>
+@{
+    ViewData["Title"] = "Inicio de Sesion";
+}
+
+<h2>Inicio de Sesión</h2>
 
 <form method="post">
     <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username">Usuario</label>
         <input type="text" id="username" name="Username" class="form-control" required />
     </div>
 
     <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Constraseña</label>
         <input type="password" id="password" name="Password" class="form-control" required />
     </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary">Iniciar</button>
 </form>
 
-<p>@Model.ErrorMessage</p>
+<p style="color: red;">@Model.ErrorMessage</p>
 
 <!-- Link to register a new user -->
 <p class="mt-3">
-    Don't have an account? <a href="/Register">Register here</a>
+    No tienes una cuenta? <a href="/Register">Registrarse</a>
 </p>

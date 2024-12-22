@@ -14,7 +14,7 @@ namespace QuestionsAnswers.Web.Pages
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
             // Redirect to the login page after logout
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Login");
         }
     }
 }

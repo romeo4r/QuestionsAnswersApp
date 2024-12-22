@@ -33,7 +33,7 @@ namespace QuestionsAnswers.Web.Pages.Question
             }
 
             // If there is an error, return a BadRequest response with the error message
-            return BadRequest("Error closing the question.");
+            return BadRequest("Error al cerrar la pregunta.");
         }
     }
 }

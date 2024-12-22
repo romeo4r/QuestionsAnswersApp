@@ -72,7 +72,7 @@ namespace QuestionsAnswers.Web.Pages.Answer
                 return RedirectToPage("/Answer/AllByQuestion", new { questionId });
             }
 
-            return BadRequest("An error occurred while creating the answer.");
+            return BadRequest("Ocurrio un error cuando se estaba creando la respuesta.");
         }
     }
 

@@ -4,11 +4,11 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>Register</h2>
+<h2>Registro de nuevo usuario</h2>
 
 <form method="post">
     <div class="form-group">
-        <label for="Username">Username</label>
+        <label for="Username">Usuario</label>
         <input type="text" class="form-control" id="Username" name="Username" required />
     </div>
     <div class="form-group">
@@ -16,15 +16,15 @@
         <input type="email" class="form-control" id="Email" name="Email" required />
     </div>
     <div class="form-group">
-        <label for="Password">Password</label>
+        <label for="Password">Contraseña</label>
         <input type="password" class="form-control" id="Password" name="Password" required />
     </div>
     <div class="form-group">
-        <label for="ConfirmPassword">Confirm Password</label>
+        <label for="ConfirmPassword">Confirmar Contraseña</label>
         <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required />
     </div>
 
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button type="submit" class="btn btn-primary">Registrar</button>
 
     @if (!string.IsNullOrEmpty(TempData["SuccessMessage"]?.ToString()))
     {
@@ -32,11 +32,11 @@
             <p>@TempData["SuccessMessage"]</p>
         </div>
 
-        <!-- JavaScript to show the success message for 2 seconds and then redirect to Login -->
+        <!-- JavaScript to show the success message for 1.5 seconds and then redirect to Login -->
         <script type="text/javascript">
             setTimeout(function() {
                 window.location.href = '/Login'; // Redirect to the login page
-            }, 2000); // 2 seconds delay
+            }, 1500); // 2 seconds delay
         </script>
     }
 
@@ -46,7 +46,7 @@
             <p>@TempData["ErrorMessage"]</p>
         </div>
 
-        <!-- JavaScript to show the error message for 2 seconds and then redirect to Login -->
+        <!-- JavaScript to show the error message for 1.5 seconds and then redirect to Login -->
         <script type="text/javascript">
             setTimeout(function () {
                 window.location.href = '/Register'; // Stay into register page

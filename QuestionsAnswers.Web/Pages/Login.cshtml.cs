@@ -90,7 +90,7 @@ namespace QuestionsAnswers.Web.Pages
             }
             else
             {
-                ErrorMessage = "Invalid login attempt.";
+                ErrorMessage = "No fue posible iniciar sesion, revisa tus credenciales.";
                 return Page(); // If login fails, return the page with error message
             }
         }

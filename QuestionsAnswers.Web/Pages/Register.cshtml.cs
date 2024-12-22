@@ -45,7 +45,7 @@ namespace QuestionsAnswers.Web.Pages
             // Validate the passwords match
             if (Password != ConfirmPassword)
             {
-                ErrorMessage = "Passwords do not match.";
+                TempData["ErrorMessage"] = "Las contraseñas no coinciden. Intente de nuevo";
                 return Page();
             }
 
@@ -68,7 +68,7 @@ namespace QuestionsAnswers.Web.Pages
             if (userExistsResponse.IsSuccessStatusCode)
             {
                 // If the user exists, show an error message
-                TempData["ErrorMessage"] = "Username already exists. Please choose another username";
+                TempData["ErrorMessage"] = "El usuario ya existe. Elija otro nombre de usuario";
                 return RedirectToPage("/Register"); // Stay on the register page to show error message
             }
 
@@ -78,13 +78,13 @@ namespace QuestionsAnswers.Web.Pages
             if (response.IsSuccessStatusCode)
             {
                 // Set the success message in TempData
-                TempData["SuccessMessage"] = "User successfully registered!";
+                TempData["SuccessMessage"] = "Usuario registrado correctamente!";
                 return RedirectToPage("/Register"); // Stay on the register page to show success message
             }
             else
             {
                 // If registration fails, show the error message
-                TempData["ErrorMessage"] = "Registration failed. Please Try Againg"; // Stay on the register page to show error message
+                TempData["ErrorMessage"] = "Error en el registro, intente de nuevo"; // Stay on the register page to show error message
                 return RedirectToPage("/Register");
             }
         }

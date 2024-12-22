@@ -1,16 +1,19 @@
 ﻿@page
 @model QuestionsAnswers.Web.Pages.Question.CreateModel
+@{
+    ViewData["Title"] = "Hacer pregunta";
+}
 
-<h2>Create a New Question</h2>
+<h3>Hacer una nueva pregunta</h3>
 
 <form method="post">
     <div class="form-group">
-        <label for="title">Question Title</label>
+        <label for="title">Escribe aquí tu pregunta</label>
         <input type="text" id="title" name="title" class="form-control" required />
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">Create</button>
+    <button type="submit" class="btn btn-primary mt-2">Crear Pregunta</button>
 </form>
 <p></p>
 <!-- Button to return to the answers list for this question -->
-<a href="/Question/All" class="btn btn-primary">Back to Questions</a>
+<a href="/Question/All" class="btn btn-primary">Regresar</a>
