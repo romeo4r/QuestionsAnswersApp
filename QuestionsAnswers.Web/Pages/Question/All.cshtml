@@ -30,6 +30,7 @@
             <tr>
                 <td>@question.Title</td>
                 <td>@question.UserName</td>
+
                 <td>@question.CreationDate</td>
                 <td>
                     <!-- Hidden input for UserQAId -->
@@ -38,11 +39,11 @@
                     @if (!question.IsClosed)
                     {
                         <!-- Link to answer a question -->
-                        <a href="//Answers/@question.Id" class="btn btn-answer btn-sm">Answer</a>
+                        <a href="/Answer/Create/@question.Id" class="btn btn-answer btn-sm">Answer</a>
                     }
 
                     <!-- Link to view answers -->
-                    <a href="/Answers/AllByQuestion/@question.Id" class="btn btn-view-answers btn-sm">View Answers</a>
+                    <a href="/Answer/AllByQuestion/@question.Id" class="btn btn-view-answers btn-sm">View Answers</a>
 
                     @if (!question.IsClosed)
                     {

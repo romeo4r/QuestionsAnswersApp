@@ -12,5 +12,6 @@ namespace QuestionsAnswers.API.Models
 
         public Question Question { get; set; }
         public UserQA UserQA { get; set; }
+        public string UserName { get; set; }
     }
 }

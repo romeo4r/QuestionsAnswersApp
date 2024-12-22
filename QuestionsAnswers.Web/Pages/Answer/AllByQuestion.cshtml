@@ -1,0 +1,44 @@
+﻿@page "{questionId}"
+@model QuestionsAnswers.Web.Pages.Answer.AllByQuestionModel
+
+@{
+    ViewData["Title"] = "Answers for Question";
+}
+
+<h2>@Model.Question.Title</h2>
+
+<p><strong>Asked by:</strong> @Model.Question.UserName</p>
+<p><strong>Creation Date:</strong> @Model.Question.CreationDate.ToString("yyyy/MM/dd HH:mm:ss")</p>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-warning">
+        @Model.ErrorMessage
+    </div>
+}
+else
+{
+    <h3>Answers:</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Response</th>
+                <th>User</th>
+                <th>Creation Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var answer in Model.Answers)
+            {
+                <tr>
+                    <td>@answer.Response</td>
+                    <td>@answer.UserName</td>
+                    <td>@answer.CreationDate.ToString("MM/dd/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- Button to return to the list of questions -->
+<a href="/Question/All" class="btn btn-primary">Back to Questions</a>

@@ -43,6 +43,21 @@ namespace QuestionsAnswers.Web.Pages.Question
                 {
                     var content = await response.Content.ReadAsStringAsync();
                     Questions = JsonConvert.DeserializeObject<List<QuestionDto>>(content);
+
+                    // Format the CreationDate for each question
+                    foreach (var question in Questions)
+                    {
+                        if (DateTime.TryParse(question.CreationDate, out DateTime creationDate))
+                        {
+                            // Format the date as "yyyy/MM/dd HH:mm:ss"
+                            question.CreationDate = creationDate.ToString("yyyy/MM/dd HH:mm:ss");
+                        }
+                        else
+                        {
+                            // If the date is invalid, set a default value
+                            question.CreationDate = "Invalid date";
+                        }
+                    }
                 }
                 else
                 {

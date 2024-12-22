@@ -246,9 +246,9 @@ CREATE PROCEDURE sp_GetQuestionById
 AS
 BEGIN
     -- Retrieve the question by their Id
-    SELECT Id, UserQAId, Title, CreationDate, IsClosed
-    FROM Question
-    WHERE Id = @Id;
+    SELECT Q.Id AS 'Id', Q.UserQAId AS 'UserQAId', Q.Title AS 'Title', UQA.UserName AS 'UserName',Q.CreationDate AS 'CreationDate', Q.IsClosed AS 'IsClosed'
+    FROM Question Q JOIN UserQA UQA on Q.UserQAId = UQA.Id
+    WHERE Q.Id = @Id;
 END
 GO
 
@@ -480,10 +480,10 @@ CREATE PROCEDURE sp_GetAnswersByQuestionDesc
 AS
 BEGIN
     -- Retrieve all answers for the given question, ordered by CreationDate in descending order
-    SELECT Id, QuestionId, UserQAId, Response, CreationDate
-    FROM Answer
-    WHERE QuestionId = @QuestionId
-    ORDER BY CreationDate DESC;
+	SELECT A.Id AS 'Id', A.UserQAId AS 'UserQAId', A.QuestionId AS 'QuestionId', A.Response AS 'Response', UQA.UserName AS 'UserName',A.CreationDate AS 'CreationDate'
+    FROM Answer A JOIN UserQA UQA on A.UserQAId = UQA.Id
+    WHERE A.QuestionId = @QuestionId
+    ORDER BY A.CreationDate DESC;
 END
 GO
 

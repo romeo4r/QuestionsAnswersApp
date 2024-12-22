@@ -143,6 +143,7 @@ namespace QuestionsAnswers.API.Services
                                 QuestionId = reader.GetGuid(reader.GetOrdinal("QuestionId")),
                                 UserQAId = reader.GetGuid(reader.GetOrdinal("UserQAId")),
                                 Response = reader.GetString(reader.GetOrdinal("Response")),
+                                UserName = reader.GetString(reader.GetOrdinal("UserName")),
                                 CreationDate = reader.GetDateTime(reader.GetOrdinal("CreationDate"))
                             });
                         }

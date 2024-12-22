@@ -63,6 +63,7 @@ namespace QuestionsAnswers.API.Services
                                 Id = reader.GetGuid(reader.GetOrdinal("Id")),
                                 UserQAId = reader.GetGuid(reader.GetOrdinal("UserQAId")),
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
+                                UserName = reader.GetString(reader.GetOrdinal("UserName")),
                                 CreationDate = reader.GetDateTime(reader.GetOrdinal("CreationDate")),
                                 IsClosed = reader.GetBoolean(reader.GetOrdinal("IsClosed"))
                             };
