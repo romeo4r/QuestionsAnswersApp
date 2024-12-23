@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Register DbContext with the connection string from the appsettings.json
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BibliotecaConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DBQuestionsAnswersConnection")));
 
 // Register Question sAnwers(QA) Services
 builder.Services.AddScoped<UserQAService>();

@@ -24,6 +24,12 @@ namespace QuestionsAnswers.Web.Pages.Answer
         // OnGet method to fetch the data
         public async Task<IActionResult> OnGetAsync(Guid questionId)
         {
+            //Check if the user is already authenticated
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Login");
+            }
+
             var httpClient = _httpClientFactory.CreateClient();
 
             // Fetch the question details from the API

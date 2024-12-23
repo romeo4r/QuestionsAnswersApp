@@ -28,6 +28,12 @@ namespace QuestionsAnswers.Web.Pages.Question
         // This method handles the POST request to create the question
         public async Task<IActionResult> OnPostAsync()
         {
+            //Check if the user is already authenticated
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Login");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();  // Return the same page if validation fails

@@ -24,6 +24,12 @@ namespace QuestionsAnswers.Web.Pages.Answer
 
         public async Task<IActionResult> OnGetAsync(Guid questionId)
         {
+            //Check if the user is already authenticated
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Login");
+            }
+
             var httpClient = _httpClientFactory.CreateClient();
 
             // Fetch the question details from the API
@@ -36,7 +42,7 @@ namespace QuestionsAnswers.Web.Pages.Answer
             var questionContent = await questionResponse.Content.ReadAsStringAsync();
             Question = JsonConvert.DeserializeObject<QuestionViewModel>(questionContent);
 
-            // Get the creator's username (assuming it's part of the Question object)
+            // Get the creator's username 
             CreatorUserName = Question.UserName;
 
             return Page();
@@ -46,7 +52,7 @@ namespace QuestionsAnswers.Web.Pages.Answer
         {
             var httpClient = _httpClientFactory.CreateClient();
 
-            // Retrieve UserQAId from the cookie (assuming it's stored in the cookie)
+            // Retrieve UserQAId from the cookie 
             var userQAId = User.FindFirst("userId")?.Value;
 
             if (string.IsNullOrEmpty(userQAId))

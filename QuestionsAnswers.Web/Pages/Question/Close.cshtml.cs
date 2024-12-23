@@ -19,6 +19,12 @@ namespace QuestionsAnswers.Web.Pages.Question
         // OnPost method to close the question and redirect to /Question/All
         public async Task<IActionResult> OnGetAsync(Guid id)
         {
+            //Check if the user is already authenticated
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Login");
+            }
+
             // Make a PUT request to the API to close the question
             var httpClient = _httpClientFactory.CreateClient();
             var response = await httpClient.PutAsJsonAsync($"https://localhost:5001/api/question/close/{id}", new

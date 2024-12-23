@@ -31,6 +31,12 @@ namespace QuestionsAnswers.Web.Pages.Question
         // GET request to fetch all questions for the logged-in user
         public async Task<IActionResult> OnGetAsync()
         {
+            //Check if the user is already authenticated
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Login");  
+            }
+
             // Get the UserId from the HTTP context (this will be available after authentication)
             UserId = User.FindFirstValue(ClaimTypes.Name);
 
