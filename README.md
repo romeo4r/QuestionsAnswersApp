@@ -60,3 +60,5 @@ Esta es una aplicación de preguntas y respuestas desarrollada en C# utilizando 
 
 - Por ultimo correr el proyecto y probarlo!!
 
+- Adicionalmente incluyo un video sobre como probar la aplicación y su funcionamiento en base a los requerimientos solicitados:
+  https://youtu.be/VXxaiB1d6Us
